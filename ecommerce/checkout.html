@@ -1,0 +1,315 @@
+
+"-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Vamoooose Hoverboards - Checkout</title>
+<meta http-equiv="content-type" 
+	content="text/html; charset=iso-8859-1" />
+<link rel="stylesheet" href="" type="text/css" />
+<style>
+	body {
+		font-family: Arial;
+	}
+	#wrapper {
+		width: 828px;
+	}
+	#hdr{
+		width: 100%;
+		height: 200px;
+	}
+	#custInf {
+		width: 484px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+	#t {
+		float: left;
+	}
+	#state {
+		width: 159px;
+	}
+	#country {
+		width: 159px;
+	}
+	#ordBtn {
+		margin-top: 3px;
+	}
+</style>
+<pre>
+	<script type = "text/javascript">
+		function dt() {
+			var days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+			var months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+			var now = new Date();
+			var day = days[ now.getDay() ];
+			var mth = months[ now.getMonth() ];
+			var date = now.getDate();
+			var yr = now.getFullYear();
+			var today = (day + ", " + mth + " " + date + ", " + yr);
+			return today;
+		}	
+		
+		var i = 0;
+		var o = 1;
+		var toto = 0;
+		var sp = 0;
+		function ordRev(f) {
+			if(f.email.value.indexOf("@") == -1 || f.email.value.indexOf(".") == -1) {
+				alert("Please enter a valid email address.");
+				return(false);
+			}
+			if(document.forms[0].fname.value == false) {
+				alert("Please enter your first name.");
+				document.forms[0].fname.focus();
+				return(false);
+			}
+			if(document.forms[0].lname.value == false) {
+				alert("Please enter your last name.");
+				document.forms[0].lname.focus();
+				return(false);
+			}
+			if(document.forms[0].address.value == false) {
+				alert("Please enter a street address.");
+				document.forms[0].address.focus();
+				return(false);
+			}
+			if(document.forms[0].city.value == false) {
+				alert("Please enter a city.");
+				document.forms[0].city.focus();
+				return(false);
+			}
+			if(document.forms[0].state.value == false) {
+				alert("Please select a state.");
+				document.forms[0].state.focus();
+				return(false);
+			}
+			if(document.forms[0].country.value == false) {
+				alert("Please select a country.");
+				document.forms[0].country.focus();
+				return(false);
+			}
+			if(document.forms[0].zip.value == false) {
+				alert("Please enter a zip or postal code.");
+				document.forms[0].zip.focus();
+				return false;
+			}
+			if(document.forms[0].phone.value == false) {
+				alert("Please enter a phone number.");
+				document.forms[0].phone.focus();
+				return(false);
+			}
+			
+			if(document.getElementById("free").checked == false && document.getElementById("usps").checked == false) {
+				alert("Please choose a shipping option.");
+				return(false);
+			}
+			
+			if(true) {
+				var expires1 = new Date();
+				var fn = document.getElementById("fname").value;
+				expires1.setMonth(expires1.getMonth() + 9);
+				document.cookie1 = escape("firstName") + "=" + escape(fn) + "; expires = " + expires1.toGMTString();
+				//alert(document.cookie1);
+			}
+			if(true) {
+				var expires2 = new Date();
+				var ln = document.getElementById("lname").value;
+				expires2.setMonth(expires2.getMonth() + 9);
+				document.cookie2 = escape("lastName") + "=" + escape(ln) + "; expires = " + expires2.toGMTString();
+				//alert(document.cookie2);
+			}
+			if(true) {
+				var expires3 = new Date();
+				var mail = document.getElementById("email").value;
+				expires3.setMonth(expires3.getMonth() + 9);
+				document.cookie3 = escape("email") + "=" + escape(mail) + "; expires = " + expires3.toGMTString();
+				//alert(document.cookie3);
+			}
+
+			while(o !== null) {
+				try
+				{
+					var o = parseInt(window.opener.document.getElementById(i + "f").innerHTML); // calls prod price for each item, totals them.
+					//alert("Beginning value of i: " + i);
+					toto += o;
+					parseInt(toto);
+					i++;
+										
+					for (var j=0; j<f.shipping.length; j++) {        	// determines which shipping option is selected.  
+						sp = parseInt(f.shipping.value); 
+						//alert("This is the value of o: " + o);
+					} 
+				}
+				catch(err)													// When the value of o has returned a null, I want the program 
+				{															// to stop and provide the values relating to the number of iterations.
+					var ttl = toto + sp;
+					//alert("Value of ttl: " + ttl);
+					alert("Your Order: " + "\n" + 
+					i + " Segway Hoverboards:" + "\t" + "$" + toto.toFixed(2) + "\n" 
+					+ "Shipping charges: " + "\t\t" + "$" + sp.toFixed(2) + ".\n" 
+					+ "Your order total: " + "\t\t\t" + "$" + ttl.toFixed(2) + ".");
+					
+					alert("Your order is ready to be placed.\n" +
+					"Please contact us at (800) 555-5555\n" +
+					" with any changes, questions or concerns.");
+					if(confirm("Are you ready to submit your order?")) {
+						return(true);
+					}
+					else{
+						return(false);
+					}
+
+				}
+			}
+		} 
+	</script>
+</pre>
+</head>
+<body>
+<div id = "wrapper">
+	<div id = "hdr">
+		<img src="hdr.jpg" width="828" height="200" alt="Vamoose logo">
+	</div><!-- closing hdr id -->
+	<div id = "cart">
+		<h2>Checkout</h2>
+		<hr></hr>
+	
+		
+<div id = "custInf">
+	<script type = "text/javascript">
+		var d = dt();
+		document.write(d);
+	</script>
+	<form	name="custinfo"
+			id="custinfo"
+			method="post"
+			action="" >
+			<h2>Customer Information</h2>
+			<p>
+				<input 	type = "text"
+						name = "email"
+						id = "email"
+						placeholder = "Email"
+						size = 75 />
+			</p>
+			
+			<h3>Shipping Information</h3>
+			<p>
+				<input 	type = "text"
+						name = "fname"
+						id = "fname"
+						placeholder = "First Name"
+						size = "25" />
+				<input 	type = "text"
+						name = "lname"
+						id = "lname"
+						Placeholder = "Last Name "
+						size = "45" />
+			</p>
+			<p>
+				<input 	type = "text"
+						name = "address"
+						placeholder = "Street Address"
+						size = "50" />
+				<input	type = "text"
+						name = "apt"
+						placeholder = "Apt, Suite, etc (optional)"
+						size = "20" />
+			</p>
+			<p>
+				<input 	type = "text"
+						name = "city"
+						placeholder = "City / Province"
+						size = "75" />
+			</p>
+			<p>
+				<select name="state"  id="state" size="1">
+					<option name=""   value="" disabled selected>State</option>
+					<option name="AL" value="Alabama">Alabama</option>
+					<option name="AK" value="Alaska">Alaska</option>
+					<option name="AZ" value="Arizona">Arizona</option>
+					<option name="AR" value="Arkansas">Arkansas</option>
+					<option name="CA" value="California">California</option>
+					<option name="CO" value="Colorado">Colorado</option>
+					<option name="CT" value="Connecticut">Connecticut</option>
+					<option name="DE" value="Delaware">Delaware</option>
+					<option name="FL" value="Florida">Florida</option>
+					<option name="GA" value="Georgia">Georgia</option>
+					<option name="HI" value="Hawaii">Hawaii</option>
+					<option name="ID" value="Idaho">Idaho</option>
+					<option name="IL" value="Illinois">Illinois</option>
+					<option name="IN" value="Indiana">Indiana</option>
+					<option name="IA" value="Iowa">Iowa</option>
+					<option name="KS" value="Kansas">Kansas</option>
+					<option name="KY" value="Kentucky">Kentucky</option>
+					<option name="LA" value="Louisiana">Louisiana</option>
+					<option name="ME" value="Maine">Maine</option>
+					<option name="MD" value="Maryland">Maryland</option>
+					<option name="MA" value="Massachusetts">Massachusetts</option>
+					<option name="MI" value="Michigan">Michigan</option>
+					<option name="MN" value="Minnesota">Minnesota</option>
+					<option name="MS" value="Mississippi">Mississippi</option>
+					<option name="MO" value="Missouri">Missouri</option>
+					<option name="MT" value="Montana">Montana</option>
+					<option name="NE" value="Nebraska">Nebraska</option>
+					<option name="NV" value="Nevada">Nevada</option>
+					<option name="NH" value="New Hampshire">New Hampshire</option>
+					<option name="NJ" value="New Jersey">New Jersey</option>
+					<option name="NM" value="New Mexico">New Mexico</option>
+					<option name="NY" value="New York">New York</option>
+					<option name="NC" value="North Carolina">North Carolina</option>
+					<option name="ND" value="North Dakota">North Dakota</option>
+					<option name="OH" value="Ohio">Ohio</option>
+					<option name="OK" value="Oklahoma">Oklahoma</option>
+					<option name="OR" value="Oregon">Oregon</option>
+					<option name="PA" value="Pennsylvania">Pennsylvania</option>
+					<option name="RI" value="Rhode Island">Rhode Island</option>
+					<option name="SC" value="South Carolina">South Carolina</option>
+					<option name="SD" value="South Dakota">South Dakota</option>
+					<option name="TN" value="Tennessee">Tennessee</option>
+					<option name="TX" value="Texas">Texas</option>
+					<option name="UT" value="Utah">Utah</option>
+					<option name="VT" value="Vermont">Vermont</option>
+					<option name="VA" value="Virginia">Virginia</option>
+					<option name="WA" value="Washington">Washington</option>
+					<option name="DC" value="Washington DC">Washington DC</option>
+					<option name="WV" value="West Virginia">West Virginia</option>
+					<option name="WI" value="Wisconsin">Wisconsin</option>
+					<option name="WY" value="Wyoming">Wyoming</option>
+				</select>
+				<select name="country" id="country">
+					<option name="" value="" disabled selected>Country</option>
+					<option name="US" value="United States">United States</option>
+				</select>
+				<input 	type = "text"
+						name = "zip"
+						placeholder = "ZIP/Postal Code" 
+						size = "20" />
+			</p>
+			<p>
+				<input 	type = "text"
+						name = "phone"
+						placeholder = "Phone:  Example: 555-555-5555"
+						size = "75" />
+			</p>
+			<p>
+				Free standard Shipping from now through December 31st !
+			</p>
+			<p>
+				<input 	type="radio" name="shipping"  id="free" value = "0" >FREE USPS Standard Shipping <br />
+				<input 	type="radio" name="shipping" id = "usps" value = "45" >USPS Priority 2 day - $45.00 additional<br />
+			</p>
+			
+			<p>
+				<input type="submit" value="Submit Order" onClick="ordRev(this.form)";/>
+			</p>
+	</form>	
+</div><!-- closing custInf id -->
+	</div><!-- closing cart id -->
+</div><!-- closing wrapper id-->
+</body>
+</html>
+
+
+

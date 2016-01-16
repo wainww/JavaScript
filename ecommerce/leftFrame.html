@@ -1,0 +1,228 @@
+<!DOCTYPE html PUBLIC
+"-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Vamoooose Hoverboards - Product Info Page - Hawk Hoverboard</title>
+<meta http-equiv="content-type" 
+	content="text/html; charset=iso-8859-1" />
+<link rel="stylesheet" href="" type="text/css" />
+<style>
+	body {
+		font-family: Arial;
+	}
+	#wrapper {
+		width: 828px;
+	}
+	#hdr{
+		width: 100%;
+		height: 200px;
+	}
+	#prodpic {
+		float: left;
+		width: 350px;
+		height: 285px;
+		margin-right: 10px;
+		border: 1px solid black;
+	}
+	#prodHdr {
+		font-size: 24pt;
+		font-weight: bold;
+		float: left;
+		width: 440px;
+		height: 50px;
+		margin-top: 20px;
+		text-align: center;
+	}
+	.colorselect select {
+		width: 120px;
+		height: 20px;
+		float: right;
+		margin-right: 25px;
+		clear: float;
+	}
+	#price {
+		float: left;
+		width: 210px;
+		margin-left: 25px;
+	}
+	#addToCart {
+		float: right;
+		width: 93px;
+		margin-top: 15px;
+		margin-right: 22px;
+	} 
+	#prodinfo p{
+		margin-top: 100px;
+	}
+</style>
+
+<script type = "text/javascript">
+	function calc(rc) {
+		var tableBdy = parent.frames.rframe.document.getElementById("tblbd");
+		var rowCount = tableBdy.rows.length;
+		var tr = tableBdy.insertRow(rowCount);	
+		// FIRST CELL ON TOTAL LINE - PIC
+		var cell1 = tr.insertCell(0);
+		cell1.id = rc + "a";
+		cell1.innerHTML = "<b>Totals:</b>";
+		//cell1.innerHTML = "a";
+		// SECOND CELL ON TOTAL LINE - ITEM
+		var cell2 = tr.insertCell(1);
+		cell2.id = rc + "b";
+		//cell2.innerHTML = "b";
+		// THIRD CELL ON TOTAL LINE - OPTION
+		var cell3 = tr.insertCell(2);
+		cell3.id = rc + "c";
+		//cell3.innerHTML = "c";
+		// FORTH CELL ON TOTAL LINE - PRICE
+		var cell4 = tr.insertCell(3);
+		cell4.id = rc + "d";
+		//cell4.innerHTML = "d";
+		// FIFTH CELL ON TOTAL LINE - QUANTITY
+		var cell5 = tr.insertCell(4);
+		cell5.id = rc + "e";
+		//cell5.innerHTML = "e";
+		// SIXTH CELL ON TOTAL LINE - TOTAL
+		var cell6 = tr.insertCell(5);
+		cell6.id = rc + "f";
+		//cell6.innerHTML = "f";
+		
+		// adds the items in the Quantity column
+		var lineQty = 0;
+		var totQty = 0;
+		var colTot = 0;
+		var netTot = 0;
+		
+	
+		
+		for(i=0; i<=rc; i++){
+			lineQty = parseInt(parent.frames.rframe.document.getElementById(i + "e").innerHTML);		
+			totQty += lineQty;																			
+			cell5.innerHTML = "<b>" + totQty + "</b>";   												
+			colTot = parseInt(parent.frames.rframe.document.getElementById(i + "f").innerHTML);	
+			//alert("Value of i: " + i);
+			netTot += colTot;																			
+			cell6.innerHTML = "<b>" + "$" + netTot.toFixed(2) + "</b>";	
+		}
+	}
+
+	function shopCartItems() {
+			 more = "Y";
+			 tableBdy = parent.frames.rframe.document.getElementById("tblbd");			
+			 rowCount = tableBdy.rows.length;
+			 tr = tableBdy.insertRow(rowCount);	
+			tr.id = rowCount;
+			// FIRST CELL - IMAGE
+			 cell1 = tr.insertCell(0);					
+			 a = smPath;							
+			 img = document.createElement('img');					
+			img.src=a;													
+			cell1.appendChild(img);													
+			// SECOND CELL - PRODUCT NAME
+			 cell2 = tr.insertCell(1);
+			cell2.id = rowCount + "b";
+			cell2.innerHTML = prodName;
+			// THIRD CELL - SELECTION BOX CHOICE
+			 cell3 = tr.insertCell(2);
+			cell3.id = rowCount + "c";
+			 cs = document.form1.menu1.selectedIndex;			// This determines which option has been selected.
+			 aa = document.form1.menu1.options[cs].value;		//  This pulls out the name of the option...for example...Charcoal Black.
+			cell3.innerHTML = aa; 								//  This assigns the text from the selected option into cell 3.
+			// FORTH CELL - ITEM PRICE
+			 cell4 = tr.insertCell(3);
+			cell4.id = rowCount + "d";
+			cell4.innerHTML = ("$" + price.toFixed(2));
+			// FIFTH CELL - QUANTITY
+			 cell5 = tr.insertCell(4);
+			cell5.id = rowCount + "e";
+			//alert(cell5.id);
+			 qty = 1;
+			cell5.innerHTML = qty; 
+			// SIXTH CELL - LINE TOTAL
+			 cell6 = tr.insertCell(5);
+			cell6.id = rowCount + "f";
+			 gt = price * qty;
+			cell6.innerHTML = gt.toFixed(2);
+			more = prompt("Do you want to add more products to the shopping cart? (Y or N)","Y or N");
+			// SEVENTH CELL - UPDATE QUANTITIES							 
+			 cell7 = tr.insertCell(6);
+			cell7.id = rowCount + "g";
+			//cell7.name = qtyt;
+			if (more == "Y" || more == "y"){
+				alert('Choose the color option and click \"Add to Cart\"');
+			}else{
+				calc(rowCount);
+			}
+	}
+</script>
+</head>
+<body>
+	<div id = "wrapper">
+	<div id = "hdr">
+			<img src="hdr.jpg" width="828" height="200" alt="Vamoose logo">
+	</div><!-- closing hdr id -->
+	<div id="prodpic">
+		<script type="text/javascript">
+			var imgPath = "hoverboards.jpg";
+			var smImg = "small";
+			var smPath = smImg.concat(imgPath);
+			// alert(smPath);   		// For testing purposes
+		</script>
+			<img src="hoverboards.jpg" width="350" height="285" alt="Hoverboards">
+	</div><!-- closing prodpic id -->
+	<div id="prodHdr">
+		<script type="text/javascript">
+			var prodName = "Segway Electric Hoverboard";
+			document.writeln(prodName);
+		</script>
+	</div><!-- closing prodHdr id-->
+	<br />
+		<div class = "colorselect">
+			<form name="form1">
+				<select name="menu1" size="1">
+					<option name="choice1" value="" disabled selected>Select a color</option>
+					<option name="choice1" value="Volcano red">Volcano Red</option>
+					<option name="choice2" value="Neon blue">Neon Blue</option>
+					<option name="choice3" value="Charcoal black">Charcoal Black</option>
+				</select>
+			</form>
+		</div><!-- closing colorselect class -->
+		<br />
+		<div id = "price">
+			<script type="text/javascript">
+				var price = 415.00;
+					document.write("Sale Price: " + "<b>$</b>" + price.toFixed(2).bold() + " usd <br />");
+					document.write("Reduced!  Was $800.00");
+			</script>
+		</div><!-- closing price div-->
+		<form name="addToCart">
+			<div id="addToCart">
+				<input 	type="button" 
+						value="Add to Cart"
+						onClick="shopCartItems(form1)"; />
+						
+			</div><!-- closing sAandrButtons id -->
+		</form>
+		<div id = "prodinfo">
+			<p>The powerful electronic gyroscope keeps you balanced on this smart balanced
+			wheel while you ride.  This intelligent drifting scooter is fun to use as an alternative to walking and has the ability to climb up to 15 degree inclines.  It can be stored in the trunk of your car and and carried into a restaurant or office for those moments you can't find close parking.  It is very fun to ride, and once you get the hang of it, very easy to use.  
+			<br /><br />
+			1 year manufacturers warranty on parts.
+			<br /><br />
+			4002 (2x200w 6 inch motors) 36 volt, High Quality Lithium Battery with Balance Charge / Discharge Protection.  
+			<br /><br />
+			Auto Shut Off saves Battery Life
+			<br /><br />
+			Maximum Weight limit 260 lbs
+			<br /><br />
+			Minimum Weight 45 lbs
+			<br /><br />
+			Please allow 2 weeks for delivery on backordered items. </p>
+		</div><!-- closing prodinfo id-->
+	</div><!-- closing wrapper id -->	
+	test();
+</body>
+</html>
+
+
